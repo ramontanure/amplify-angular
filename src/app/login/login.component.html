@@ -1,0 +1,21 @@
+<div class="grid">
+  <div class="col-8 boxImgLogin flex align-items-center justify-content-center">
+    <img [src]="logoIMG" />
+  </div>
+  <div class="col-4 h-screen flex align-items-center justify-content-center">
+    <amplify-authenticator
+      [loginMechanisms]="['email']"
+      [socialProviders]="['amazon', 'apple', 'facebook', 'google']"
+      [signUpAttributes]="['email', 'name']"
+    >
+      <ng-template
+        amplifySlot="authenticated"
+        let-user="user"
+        let-signOut="signOut"
+      >
+        <h2>Welcome, {{ user.username }}!</h2>
+        <button (click)="signOut()">Sign Out</button>
+      </ng-template>
+    </amplify-authenticator>
+  </div>
+</div>
